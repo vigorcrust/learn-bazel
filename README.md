@@ -1,0 +1,3 @@
+# learn-bazel
+
+I try to document my way of figuring out bazel, which might become a tutorial...
