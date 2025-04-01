@@ -119,4 +119,53 @@ INFO: Build completed successfully, 1 total action
 
 Amazing, it works.
 
+Off to the next project...
+
+
+### 002_my_rule
+
+Maybe to understand better how rules work it's best to write my own,
+maybe similar what I did before with an external dependency?
+
+Because I don't need any dependencies I could leave the `MODULE.bazel` blank,
+but I just bootstrap it and make the `module(...)` definition.
+
+Probably I need a folder for the rules and call it `tools` and put my rule in there.
+
+In the `BUILD.bazel` I load my local rule and invoke the function to be called.
+
+I found a little tutorial on youtube how to create a rule and I used that as
+a template to see how implement something like that.
+
+Basically you need to define:
+```
+<name of the rule I want to use in BUILD> = rule(#
+    implementation = <python/starlark function to be called>,
+    attrs = [    // List of all attributes used for the function
+        "parameter_a" : <type of parameter>,
+        ...
+    ]
+)
+```
+
+Then you need to create the implementation function, in my case:
+```
+def write_new_file_impl(ctx):
+  content = ctx.attr.content
+  out = ctx.actions.declare_file(ctx.attr.out)
+
+  ctx.actions.write(
+    output = out,
+    content = "\n".join(content),
+  )
+
+  return [DefaultInfo(files = depset([out]))]
+```
+
+to note `ctx` is used to for the input parameters, basic actions and for defining
+the output. The last line with `return [DefaultInfo...` is used to tell bazel 
+that there is an outpout defined with a `depset` - as I understand it a 
+dependecy set other modules/rules can depend on as the output of this rule.
+
+
 

@@ -1,0 +1,8 @@
+load("//:tools/my_rule.bzl", "write_new_file")
+
+write_new_file(
+  name = "write_some_text", 
+  out = "hello_world.txt", 
+  content = ["Hello NEW World"],
+)
+

@@ -1,0 +1,5 @@
+module(
+  name = "learn_002_my_rule",
+  version = "1.0"
+)
+
