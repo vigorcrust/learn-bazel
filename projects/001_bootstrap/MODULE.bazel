@@ -2,3 +2,6 @@ module(
   name = "learn_001_bootstrap",
   version = "1.0"
 )
+
+bazel_dep(name = "bazel_skylib", version = "1.7.1")
+
