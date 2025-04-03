@@ -199,6 +199,27 @@ dependencies work in a way, how to reference other BUILD targets and get a littl
 understanding about visibility.
 
 
+### 004_java_basic
 
+In my job I work with a few languages, but quite a few projects are JVM based.
+Although we currently develop quite a lot in Kotlin, I would start with plain
+Java and if that is working I would maybe continue with Kotlin.
+
+I would like to create something similar as 003 and create a library and 
+another class with a main function. Maybe I also want to add a unit test
+to see how this works as well.
+
+First, I start with a main and print something to console. Second, create a 
+simple lib with a static add(int, int) function and try to call it from the main.
+
+After tinkering a few minutes with it, it worked. I can build the lib and app
+independently and the app is refrencing the lib.
+
+I added (also to the other projects) the `.bazelversion`, so when I run bazelisk
+it actually uses the defined version. I also added nearly empty `WORKSPACE` file
+to all projects as it seems to be common practice although not really needed.
+
+Actually I wanted to also use external dependencies, but I realized that it is a
+bit more work, so I postpone it to the next project.
 
 
