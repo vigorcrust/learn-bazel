@@ -168,4 +168,37 @@ that there is an outpout defined with a `depset` - as I understand it a
 dependecy set other modules/rules can depend on as the output of this rule.
 
 
+### 003_dependencies
+
+I know that using dependencies is a tiny bit different, but it is a good and 
+easy example to see how this works.
+
+I took the 001_... project - writing a file with skylib - used that as a package
+inside this project. Then I needed to do something with it, so I decided to plain
+and simple have a shell script to `cat` the file. For this I was searching for a bit,
+but found in the bazel registry rules_shell with the sh_binary rule. So I copied the
+001 project, created 2 folders subA and subB and copied the BUILD.bazel file to subA/
+
+Now I added the dependecy to MODULE.bazel and created a new BUILD.bazel inside subB/
+folder. In the meantime I tested subA to see how the bazel path looked like.
+
+I also created a shell script in subB to be executed, but just did some debugging
+info at first like `env`, `pwd`, `echo $0`, `tree`. When I tested it I got an error
+that it is not an executable so I `chmod +x` the script. After that the script worked
+fine.
+
+The final step I had to do was to `cat` the file from subA/ folder - this took a few
+minutes to google it, but finally I got it in a way that works for now.
+
+One important step I nearly forgot to mention is that I needed to change subA's
+visibility. So not to fuss around I changed the visibility to 
+[public](https://bazel.build/concepts/visibility?hl=en#visibility-specifications).
+
+So this was a nice little learning session in between my actual work to see how
+dependencies work in a way, how to reference other BUILD targets and get a little
+understanding about visibility.
+
+
+
+
 

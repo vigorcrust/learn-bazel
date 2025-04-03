@@ -1,0 +1,10 @@
+load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
+
+sh_binary(
+  name = "test-deps",
+  srcs = ["mysbin.sh"],
+  data = [
+    "//subA:write_some_text"
+  ],
+  args = ["$(location //subA:write_some_text)"]
+)
