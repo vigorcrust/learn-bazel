@@ -1,0 +1,11 @@
+_default:
+  @just --list --verbose
+
+# Build the library
+step_1_build:
+  bazel build //lib:lib
+
+# Run Java main app which uses the lib
+step_2_run:
+  bazel run //app:app
+

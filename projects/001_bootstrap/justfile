@@ -1,0 +1,10 @@
+_default:
+  @just --list --verbose
+
+# Build the application
+build:
+  bazel build //:write_some_text
+
+# Display content of the generated file
+run:
+  cat bazel-bin/hello_world.txt

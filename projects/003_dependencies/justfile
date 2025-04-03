@@ -1,0 +1,14 @@
+_default:
+  @just --list --verbose
+
+# Build the application
+step_1_build:
+  bazel build //subA:write_some_text
+
+# Display content of the generated file
+step_2_run:
+  cat bazel-bin/subA/hello_world.txt
+
+# Run subB shell script which uses subA's generated file
+step_3_run:
+  bazel run //subB:test-deps
