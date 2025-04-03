@@ -222,4 +222,7 @@ to all projects as it seems to be common practice although not really needed.
 Actually I wanted to also use external dependencies, but I realized that it is a
 bit more work, so I postpone it to the next project.
 
+I decided to postpone the unit test, because I want to use a framework like 
+junit, but for this project it would be too much.
+
 
